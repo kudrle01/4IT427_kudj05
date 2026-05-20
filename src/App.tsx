@@ -13,19 +13,24 @@ function App() {
   };
 
   return (
-    <>
-      {films.map((film) => (
-        <FilmCard
-          key={film.title}
-          title={film.title}
-          year={film.year}
-          genre={film.genre}
-          rating={film.rating}
-          watched={film.watched}
-          onToggleWatched={handleToggleWatched}
-        />
-      ))}
-    </>
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 px-6 py-12">
+      <h1 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-10">
+        Moje filmotéka
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {films.map((film) => (
+          <FilmCard
+            key={film.title}
+            title={film.title}
+            year={film.year}
+            genre={film.genre}
+            rating={film.rating}
+            watched={film.watched}
+            onToggleWatched={handleToggleWatched}
+          />
+        ))}
+      </div>
+    </main>
   );
 }
 
