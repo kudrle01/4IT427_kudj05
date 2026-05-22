@@ -2,7 +2,34 @@ import FilmCard from '@/components/FilmCard';
 import { useWatchlist } from '@/context/WatchlistContext';
 
 const WatchlistPage = () => {
-  const { films, watchedCount, toggleWatched, removeFilm, markAllAsWatched } = useWatchlist();
+  const {
+    films,
+    isLoading,
+    isError,
+    refetch,
+    watchedCount,
+    toggleWatched,
+    removeFilm,
+    markAllAsWatched,
+  } = useWatchlist();
+
+  if (isLoading) {
+    return <p className="text-center text-gray-400 dark:text-gray-500 py-24">Načítám…</p>;
+  }
+
+  if (isError) {
+    return (
+      <div className="flex flex-col items-center gap-4 py-24 text-center">
+        <p className="text-red-500 dark:text-red-400">Nepodařilo se načíst filmy.</p>
+        <button
+          onClick={() => refetch()}
+          className="bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-4 py-2 rounded-xl transition-colors duration-200 cursor-pointer"
+        >
+          Zkusit znovu
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-8">

@@ -22,11 +22,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     setDark(next);
   };
 
-  return (
-    <ThemeContext.Provider value={{ dark, toggleDark }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ dark, toggleDark }}>{children}</ThemeContext.Provider>;
 };
 
 export const useTheme = () => {

@@ -60,7 +60,7 @@ const AddFilmForm = () => {
         <div className="flex justify-end">
           <button
             type="submit"
-className="bg-purple-600 hover:bg-purple-700 active:scale-95 text-white text-sm font-medium px-5 py-2 rounded-xl transition-all duration-200 cursor-pointer"
+            className="bg-purple-600 hover:bg-purple-700 active:scale-95 text-white text-sm font-medium px-5 py-2 rounded-xl transition-all duration-200 cursor-pointer"
           >
             Přidat film
           </button>
