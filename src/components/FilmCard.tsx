@@ -23,9 +23,10 @@ const FilmCard = ({
         flex flex-col gap-4 rounded-2xl p-5 border
         transition-all duration-200
         hover:-translate-y-1 hover:shadow-xl
-        ${watched
-          ? 'bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800 shadow-md'
-          : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 shadow-sm'
+        ${
+          watched
+            ? 'bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800 shadow-md'
+            : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 shadow-sm'
         }
       `}
     >
@@ -65,9 +66,10 @@ const FilmCard = ({
         <button
           onClick={() => onToggleWatched(id)}
           className={`w-full py-2 px-4 rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer
-            ${watched
-              ? 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-              : 'bg-purple-600 hover:bg-purple-700 text-white'
+            ${
+              watched
+                ? 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                : 'bg-purple-600 hover:bg-purple-700 text-white'
             }`}
         >
           {watched ? 'Označit jako nezhlédnuté' : 'Označit jako zhlédnuté'}

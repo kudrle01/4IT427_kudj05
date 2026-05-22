@@ -1,8 +1,10 @@
 import { useState, type SyntheticEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useWatchlist } from '@/context/WatchlistContext';
 
 const AddFilmForm = () => {
   const { addFilm } = useWatchlist();
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
   const [genre, setGenre] = useState('');
@@ -11,10 +13,7 @@ const AddFilmForm = () => {
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     addFilm({ title, year: Number(year), genre, rating: Number(rating) });
-    setTitle('');
-    setYear('');
-    setGenre('');
-    setRating('');
+    navigate('/');
   };
 
   const inputClass =
@@ -22,9 +21,7 @@ const AddFilmForm = () => {
 
   return (
     <section className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm p-6">
-      <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">
-        Přidat film
-      </h2>
+      <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">Přidat film</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <input
@@ -63,7 +60,7 @@ const AddFilmForm = () => {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="bg-purple-600 hover:bg-purple-700 active:scale-95 text-white text-sm font-medium px-5 py-2 rounded-xl transition-all duration-200 cursor-pointer"
+className="bg-purple-600 hover:bg-purple-700 active:scale-95 text-white text-sm font-medium px-5 py-2 rounded-xl transition-all duration-200 cursor-pointer"
           >
             Přidat film
           </button>
