@@ -1,16 +1,11 @@
-import { useState } from 'react';
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom';
 import { Moon, Sun } from 'lucide-react';
+import { useTheme } from '@/context/ThemeContext';
 import WatchlistPage from '@/pages/WatchlistPage';
 import AddFilmPage from '@/pages/AddFilmPage';
 
 function App() {
-  const [dark, setDark] = useState(false);
-
-  const toggleDark = () => {
-    document.documentElement.classList.toggle('dark');
-    setDark((d) => !d);
-  };
+  const { dark, toggleDark } = useTheme();
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `text-sm font-medium px-4 py-2 rounded-xl transition-colors duration-200 ${

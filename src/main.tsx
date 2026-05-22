@@ -4,13 +4,16 @@ import { BrowserRouter } from 'react-router-dom';
 import '@/index.css';
 import App from '@/App.tsx';
 import { WatchlistProvider } from '@/context/WatchlistContext';
+import { ThemeProvider } from '@/context/ThemeContext';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <WatchlistProvider>
-        <App />
-      </WatchlistProvider>
+      <ThemeProvider>
+        <WatchlistProvider>
+          <App />
+        </WatchlistProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </StrictMode>
 );
