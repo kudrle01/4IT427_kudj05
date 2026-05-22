@@ -1,10 +1,20 @@
 import type { Film } from '@/types/film.types';
 
 interface FilmCardProps extends Film {
-  onToggleWatched: (title: string) => void;
+  onToggleWatched: (id: string) => void;
+  onRemove: (id: string) => void;
 }
 
-const FilmCard = ({ title, year, genre, rating, watched, onToggleWatched }: FilmCardProps) => {
+const FilmCard = ({
+  id,
+  title,
+  year,
+  genre,
+  rating,
+  watched,
+  onToggleWatched,
+  onRemove,
+}: FilmCardProps) => {
   const isRatingValid = rating >= 1 && rating <= 10;
 
   return (
@@ -36,16 +46,24 @@ const FilmCard = ({ title, year, genre, rating, watched, onToggleWatched }: Film
         )}
       </div>
 
-      <button
-        onClick={() => onToggleWatched(title)}
-        className={`mt-auto w-full py-2 px-4 rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer ${
-          watched
-            ? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-            : 'bg-purple-600 hover:bg-purple-700 text-white'
-        }`}
-      >
-        {watched ? 'Označit jako nezhlédnuté' : 'Označit jako zhlédnuté'}
-      </button>
+      <div className="mt-auto flex flex-col gap-2">
+        <button
+          onClick={() => onToggleWatched(id)}
+          className={`w-full py-2 px-4 rounded-xl text-sm font-medium transition-colors duration-200 cursor-pointer ${
+            watched
+              ? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+              : 'bg-purple-600 hover:bg-purple-700 text-white'
+          }`}
+        >
+          {watched ? 'Označit jako nezhlédnuté' : 'Označit jako zhlédnuté'}
+        </button>
+        <button
+          onClick={() => onRemove(id)}
+          className="w-full py-2 px-4 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-950 transition-colors duration-200 cursor-pointer"
+        >
+          Odebrat
+        </button>
+      </div>
     </div>
   );
 };
